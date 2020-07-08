@@ -14,3 +14,12 @@ export const Button = styled.button`
   right: 0;
   cursor: pointer;
 `;
+
+type ListContainerProps = {
+  focus: boolean;
+};
+
+export const ListContainer = styled.div<ListContainerProps>`
+  transition: filter 0.3s ease-in-out;
+  ${(props) => props.focus && `filter: blur(10px);`}
+`;

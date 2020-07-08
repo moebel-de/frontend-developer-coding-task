@@ -1,4 +1,4 @@
-import React, { ChangeEvent, KeyboardEvent } from 'react';
+import React, { ChangeEvent, KeyboardEvent, FocusEvent } from 'react';
 import { Input } from './styles';
 
 type Props = {
@@ -7,6 +7,8 @@ type Props = {
   placeholder?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (event: KeyboardEvent<HTMLInputElement>) => void;
+  onFocus?: (event: FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
 };
 
 const TextInput: React.FC<Props> = ({
@@ -15,6 +17,8 @@ const TextInput: React.FC<Props> = ({
   value,
   onChange,
   onKeyDown,
+  onFocus,
+  onBlur,
 }) => {
   return (
     <Input
@@ -24,6 +28,8 @@ const TextInput: React.FC<Props> = ({
       placeholder={placeholder}
       onChange={onChange}
       onKeyDown={onKeyDown}
+      onFocus={onFocus}
+      onBlur={onBlur}
     />
   );
 };

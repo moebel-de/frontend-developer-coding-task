@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, TextInputContainer, Button } from './styles';
+import { Container, TextInputContainer, Button, ListContainer } from './styles';
 import TextInput from '../../components/TextInput';
 import WeatherList from '../../components/WeatherList';
 import useCityWeather, { DataPayload } from '../../hooks/useCityWeather';
@@ -12,6 +12,7 @@ type WeatherSummaryProps = {
 
 const WeatherSummary: React.FC<WeatherSummaryProps> = ({ changeTemp }) => {
   const [city, setCity] = useState('London');
+  const [focus, setFocus] = useState(false);
   const { weatherData, fetchData } = useCityWeather(city);
   const {
     data: { cod, list },
@@ -33,19 +34,31 @@ const WeatherSummary: React.FC<WeatherSummaryProps> = ({ changeTemp }) => {
     }
   };
 
+  const onFocusText = () => {
+    setFocus(true);
+  };
+
+  const onBlurText = () => {
+    setFocus(false);
+  };
+
   return (
     <Container data-testid='weather-summary'>
       <TextInputContainer>
         <TextInput
           onChange={onChangeText}
           onKeyDown={onKeyPressText}
+          onFocus={onFocusText}
+          onBlur={onBlurText}
           value={city}
         />
         <Button onClick={() => fetchData(city)}>
           <Icon name='direction-right' size='60' />
         </Button>
       </TextInputContainer>
-      {cod !== '200' ? <CityNotFound /> : <WeatherList list={list} />}
+      <ListContainer focus={focus}>
+        {cod !== '200' ? <CityNotFound /> : <WeatherList list={list} />}
+      </ListContainer>
     </Container>
   );
 };

@@ -45,7 +45,7 @@ const IconContainer = styled.div`
   display:flex;
   justify-items:center;
   align-items:center;
-  flex-direction: column;
+  flex-direction: row;
 `
 
 interface InputProps {

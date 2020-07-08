@@ -246,7 +246,7 @@ export const icons: any = {
 
   '800': {
     label: 'clear sky',
-    icon: 'sunny',
+    icon: 'day-sunny',
   },
 
   '801': {
@@ -362,5 +362,10 @@ export const icons: any = {
   '962': {
     label: 'hurricane',
     icon: 'cloudy-gusts',
+  },
+
+  'direction-right': {
+    label: 'wind direction right',
+    icon: 'direction-right',
   },
 };

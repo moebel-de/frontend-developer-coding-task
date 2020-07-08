@@ -7,7 +7,7 @@ type Props = {
 };
 
 const TempBackground: React.FC<Props> = ({ children, temp = 10 }) => {
-  const tempResult = temp > 15 ? Colors.hot : Colors.cold;
+  const tempResult = temp >= 15 ? Colors.hot : Colors.cold;
 
   return <Container temp={tempResult}>{children}</Container>;
 };

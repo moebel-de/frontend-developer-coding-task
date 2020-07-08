@@ -29,5 +29,6 @@ type ContainerProps = {
 export const Container = styled.div<ContainerProps>`
   width: 100vw;
   height: 100vh;
+  padding: 30px;
   ${({ temp }) => colors[temp]};
 `;

@@ -1,10 +1,24 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import { createGlobalStyle } from 'styled-components'
+const GlobalStyle = createGlobalStyle`
+  *{
+    font-family: 'Roboto', sans-serif;
+  }
+  body {
+    margin:0;
+  }
+  #root{
+    min-height:100vh;
+    width:100vw;
+  }
+`
 
 ReactDOM.render(
-  <React.StrictMode>
+  <div>
     <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+    <GlobalStyle />
+  </div>,
+  document.getElementById('root')
+)

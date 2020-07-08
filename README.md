@@ -1,5 +1,11 @@
 # Moebel.de Frontend developer coding task
 
+## Start Application
+
+To start the application there are two options:
+1.  Start the client and server in dev mode with __npm run start__
+2.  Create a build with __npm run build__ and then start the express server with __npm run dev:server__
+
 ## Brief
 
 The goal is to create a weather app that shows the weather forecast for a given city. We recommend to either use https://openweathermap.org/api or create a mock api, for instance via https://github.com/typicode/json-server

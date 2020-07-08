@@ -15,8 +15,6 @@ type WeatherItemProps = {
 };
 
 const WeatherList: React.FC<WeatherListProps> = ({ list }) => {
-  console.log(list);
-
   return (
     <Container>
       {list.map((item: any, index: number) =>

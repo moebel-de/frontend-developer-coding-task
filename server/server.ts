@@ -45,7 +45,6 @@ app.get('/api/weather/:city', async (req, res) => {
     const coords = await getCoordsByCity(<string>req.params.city)
     res.send(coords)
   } catch (err) {
-    console.log(err)
     let statusCode = err && err.response && err.response.status ? err.response.status : 404
     res.statusCode = statusCode
     res.send({ errorCode: statusCode })

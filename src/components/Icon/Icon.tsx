@@ -28,7 +28,7 @@ const Icon: React.FC<IconProps> = ({ name, size }) => {
   }, [name]);
 
   if (!loading && path.default) {
-    return <Image src={path.default} size={size} />;
+    return <Image data-testid='icon' src={path.default} size={size} />;
   }
 
   return null;

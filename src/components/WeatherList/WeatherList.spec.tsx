@@ -4,7 +4,8 @@ import WeatherList from './WeatherList';
 import { data } from '../../api/mock';
 
 describe('<WeatherList />', () => {
-  it('should render without crash', () => {
-    render(<WeatherList list={data.list} />);
+  it('should render without crash', async () => {
+    const { findByTestId } = render(<WeatherList list={data.list} />);
+    expect(await findByTestId('weather-list')).toBeInTheDocument();
   });
 });

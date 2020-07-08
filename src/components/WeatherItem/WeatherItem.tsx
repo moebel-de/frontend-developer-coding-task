@@ -15,7 +15,7 @@ const WeatherItem: React.FC<WeatherItemProps> = ({ item }) => {
   };
 
   return (
-    <Container>
+    <Container data-testid='weather-item'>
       <DayOfWeek>{formatDate()}</DayOfWeek>
       <ForecastTemp>
         <TempLabel degree={item.temp.day} size={Size.normal} />

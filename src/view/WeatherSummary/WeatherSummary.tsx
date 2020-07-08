@@ -7,7 +7,7 @@ import CityNotFound from '../../components/CityNotFound';
 import Icon from '../../components/Icon';
 
 type WeatherSummaryProps = {
-  changeTemp: React.Dispatch<React.SetStateAction<number>>;
+  changeTemp?: React.Dispatch<React.SetStateAction<number>>;
 };
 
 const WeatherSummary: React.FC<WeatherSummaryProps> = ({ changeTemp }) => {
@@ -18,7 +18,7 @@ const WeatherSummary: React.FC<WeatherSummaryProps> = ({ changeTemp }) => {
   } = weatherData as DataPayload;
 
   useEffect(() => {
-    if (list) {
+    if (list && changeTemp) {
       changeTemp(list[0].temp.day);
     }
   }, [list, changeTemp]);
@@ -34,7 +34,7 @@ const WeatherSummary: React.FC<WeatherSummaryProps> = ({ changeTemp }) => {
   };
 
   return (
-    <Container>
+    <Container data-testid='weather-summary'>
       <TextInputContainer>
         <TextInput
           onChange={onChangeText}

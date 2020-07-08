@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, TextInputContainer, Button } from './styles';
 import TextInput from '../../components/TextInput';
 import WeatherList from '../../components/WeatherList';
@@ -6,12 +6,22 @@ import useCityWeather, { DataPayload } from '../../hooks/useCityWeather';
 import CityNotFound from '../../components/CityNotFound';
 import Icon from '../../components/Icon';
 
-const WeatherSummary = () => {
+type WeatherSummaryProps = {
+  changeTemp: React.Dispatch<React.SetStateAction<number>>;
+};
+
+const WeatherSummary: React.FC<WeatherSummaryProps> = ({ changeTemp }) => {
   const [city, setCity] = useState('London');
   const { weatherData, fetchData } = useCityWeather(city);
   const {
     data: { cod, list },
   } = weatherData as DataPayload;
+
+  useEffect(() => {
+    if (list) {
+      changeTemp(list[0].temp.day);
+    }
+  }, [list, changeTemp]);
 
   const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCity(e.target.value);

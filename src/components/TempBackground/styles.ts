@@ -1,19 +1,19 @@
 import styled, { css } from 'styled-components';
 
-export enum Colors {
+export enum BackgroundColors {
   cold = 'cold',
   hot = 'hot',
 }
 
 const colors = {
-  [Colors.hot]: css`
+  [BackgroundColors.hot]: css`
     background: linear-gradient(
       -180deg,
       rgb(247, 191, 176) 0%,
       rgb(223, 210, 127) 100%
     );
   `,
-  [Colors.cold]: css`
+  [BackgroundColors.cold]: css`
     background: linear-gradient(
       -180deg,
       rgb(176, 247, 220) 0%,
@@ -23,7 +23,7 @@ const colors = {
 };
 
 type ContainerProps = {
-  temp: Colors;
+  temp: BackgroundColors;
 };
 
 export const Container = styled.div<ContainerProps>`

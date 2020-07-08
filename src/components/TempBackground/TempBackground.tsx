@@ -1,13 +1,13 @@
 import React from 'react';
-import { Container, Colors } from './styles';
+import { Container, BackgroundColors } from './styles';
 
 type Props = {
-  temp?: number;
+  temp: number;
   children: React.ReactNode;
 };
 
-const TempBackground: React.FC<Props> = ({ children, temp = 10 }) => {
-  const tempResult = temp >= 15 ? Colors.hot : Colors.cold;
+const TempBackground: React.FC<Props> = ({ children, temp }) => {
+  const tempResult = temp >= 15 ? BackgroundColors.hot : BackgroundColors.cold;
 
   return <Container temp={tempResult}>{children}</Container>;
 };

@@ -3,7 +3,11 @@ import styled from 'styled-components'
 import { LoadingSpinner } from './LoadingSpinner'
 import { Icon } from '../Icon/Icon'
 
-
+export const TEST_IDS = {
+  SEARCH_INPUT: 'search-input',
+  LOADING_SPINNER: 'loading-spinner',
+  GET_LOCATION: 'get-location'
+}
 
 const Container = styled.div`
   width:100%;
@@ -76,16 +80,16 @@ export const Input: FunctionComponent<InputProps> = ({ focusHandler, inputHandle
     <Container>
       <Label htmlFor="search-input">
         Search
-        <StyledInput id="search-input" placeholder="Stadt?" onChange={handleInput} onFocus={(event) => { focusHandler('focus', event) }} onBlur={(event) => { focusHandler('blur', event) }} type="text" />
+        <StyledInput data-test-id={TEST_IDS.SEARCH_INPUT} id="search-input" placeholder="Stadt?" onChange={handleInput} onFocus={(event) => { focusHandler('focus', event) }} onBlur={(event) => { focusHandler('blur', event) }} type="text" />
       </Label>
       <IconContainer>
         {
-          isSearching ? <LoadingSpinner size={'100%'} color={'#000'} /> : null
+          isSearching ? <LoadingSpinner data-test-id={TEST_IDS.LOADING_SPINNER} size={'100%'} color={'#000'} /> : null
         }
       </IconContainer>
       {
         navigator ?
-          <IconContainer onClick={getPosition}>
+          <IconContainer data-test-id={TEST_IDS.GET_LOCATION} onClick={getPosition}>
             <Icon size={25}>location</Icon>
           </IconContainer>
           :

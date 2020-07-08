@@ -41,7 +41,7 @@ const WeatherSummary: React.FC<WeatherSummaryProps> = ({ changeTemp }) => {
           onKeyDown={onKeyPressText}
           value={city}
         />
-        <Button>
+        <Button onClick={() => fetchData(city)}>
           <Icon name='direction-right' size='60' />
         </Button>
       </TextInputContainer>

@@ -23,6 +23,7 @@ const Title = styled.h1`
     font-size: 15px;
     font-weight: 900;
     margin: 0;
+    padding-top: 1em;
 `
 
 export default Header;

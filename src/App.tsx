@@ -2,6 +2,7 @@ import React, { useState, FocusEvent, ChangeEvent } from "react";
 
 import { AppHeader } from "./components/AppHeader";
 import { AppBackground } from "./components/AppBackground";
+import { ForecastBoard } from "./components/ForecastBoard";
 import { CitySearchField } from "./components/CitySearchField";
 import { useWeeklyForecast } from "./hooks/use-weekly-forecast";
 
@@ -13,8 +14,6 @@ function App() {
   const [{ data, isFetching, error }, setCity] = useWeeklyForecast(
     INITILA_CITY
   );
-
-  console.log({ data, isFetching, error });
 
   const handleSearchFieldFocusToggle = (
     event: FocusEvent<HTMLButtonElement> | FocusEvent<HTMLInputElement>
@@ -48,6 +47,11 @@ function App() {
         onChange={handleSearchInputOnChange}
         onBlur={handleSearchFieldFocusToggle}
         onFocus={handleSearchFieldFocusToggle}
+      />
+      <ForecastBoard
+        today={data?.today}
+        nextDays={data?.nextDays}
+        isLoading={Boolean(error) || isFetching || isFocusedSearchInput}
       />
     </AppBackground>
   );

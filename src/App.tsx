@@ -1,6 +1,7 @@
 import React, { useState, FocusEvent, ChangeEvent } from "react";
 
 import { AppHeader } from "./components/AppHeader";
+import { AppBackground } from "./components/AppBackground";
 import { CitySearchField } from "./components/CitySearchField";
 import { useWeeklyForecast } from "./hooks/use-weekly-forecast";
 
@@ -39,7 +40,7 @@ function App() {
   };
 
   return (
-    <>
+    <AppBackground temperature={data?.today.temperature ?? 16}>
       <AppHeader />
       <CitySearchField
         value={searchTerm}
@@ -48,7 +49,7 @@ function App() {
         onBlur={handleSearchFieldFocusToggle}
         onFocus={handleSearchFieldFocusToggle}
       />
-    </>
+    </AppBackground>
   );
 }
 

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+import { device } from "../../shared/device";
 import { ReactComponent as ArrowRightIcon } from "../../assets/images/svg-icons/arrow-right.svg";
 
 export const Container = styled.form`
@@ -43,6 +44,10 @@ export const Input = styled.input`
   &::-webkit-search-results-button,
   &::-webkit-search-results-decoration {
     -webkit-appearance: none;
+  }
+
+  @media ${device.laptop} {
+    text-align: center;
   }
 `;
 

@@ -1,13 +1,18 @@
 import React from "react";
 import logo from "./logo.svg";
+import { BackgroundContainer } from "./components/Background";
+import { GlobalStyle } from "./style/GlobalStyle";
 
 function App() {
   return (
-    <div>
-      <header>
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <BackgroundContainer temperatur={10}>
+        <header>
+          <img src={logo} className="App-logo" alt="logo" />
+        </header>
+      </BackgroundContainer>
+    </>
   );
 }
 

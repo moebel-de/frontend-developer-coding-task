@@ -4,7 +4,7 @@ import App from "./App";
 
 describe("App", () => {
   test("renders App component", () => {
-    const { getByRole } = render(<App />);
-    expect(getByRole("img")).toBeInTheDocument();
+    const r = render(<App />);
+    expect(r.getByText("logo.svg")).toBeInTheDocument();
   });
 });

@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
 import { BackgroundContainer } from "./components/Background";
 import { GlobalStyle } from "./style/GlobalStyle";
+import { ReactComponent as WWLogo } from "./logo.svg";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <GlobalStyle />
       <BackgroundContainer temperatur={10}>
         <header>
-          <img src={logo} className="App-logo" alt="logo" />
+          <WWLogo />
         </header>
       </BackgroundContainer>
     </>

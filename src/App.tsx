@@ -1,19 +1,27 @@
-import React, { useState, FocusEvent, ChangeEvent } from "react";
+import React, { useState, FocusEvent, ChangeEvent, useEffect } from "react";
+import { toast } from "react-toastify";
 
 import { AppHeader } from "./components/AppHeader";
-import { AppBackground } from "./components/AppBackground";
 import { ForecastBoard } from "./components/ForecastBoard";
+import { AppBackground } from "./components/AppBackground";
 import { CitySearchField } from "./components/CitySearchField";
 import { useWeeklyForecast } from "./hooks/use-weekly-forecast";
 
 const INITILA_CITY = "Hamburg";
 
 function App() {
+  const toastId = React.useRef("");
   const [searchTerm, setSearchTerm] = useState(INITILA_CITY);
   const [isFocusedSearchInput, setIsFocusedSearchInput] = useState(false);
   const [{ data, isFetching, error }, setCity] = useWeeklyForecast(
     INITILA_CITY
   );
+
+  useEffect(() => {
+    if (!toast.isActive(toastId.current)) {
+      toastId.current = toast(error, { type: "error" }).toString();
+    }
+  }, [error]);
 
   const handleSearchFieldFocusToggle = (
     event: FocusEvent<HTMLButtonElement> | FocusEvent<HTMLInputElement>

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { device } from "../../shared/device";
+
 interface WrapperProps {
   isBlurred: boolean;
 }
@@ -13,7 +15,7 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 0 1.25em;
 
-  @media (min-width: 480px) {
+  @media ${device.mobileLarge} {
     max-width: 360px;
   }
 `;

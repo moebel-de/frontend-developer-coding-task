@@ -12,7 +12,7 @@ const INITILA_CITY = "Hamburg";
 function App() {
   const toastId = React.useRef("");
   const [searchTerm, setSearchTerm] = useState(INITILA_CITY);
-  const [isFocusedSearchInput, setIsFocusedSearchInput] = useState(false);
+  const [isBlurred, setIsBlurred] = useState(false);
   const [{ data, isFetching, error }, setCity] = useWeeklyForecast(
     INITILA_CITY
   );
@@ -27,23 +27,23 @@ function App() {
     event: FocusEvent<HTMLButtonElement> | FocusEvent<HTMLInputElement>
   ) => {
     if (event.type === "focus") {
-      setIsFocusedSearchInput(true);
+      setIsBlurred(true);
     } else {
-      setIsFocusedSearchInput(false);
+      setIsBlurred(false);
     }
   };
 
   const handleSearchInputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
 
-    if (!isFocusedSearchInput) {
-      setIsFocusedSearchInput(true);
+    if (!isBlurred) {
+      setIsBlurred(true);
     }
   };
 
   const handleSearch = () => {
     setCity(searchTerm);
-    setIsFocusedSearchInput(false);
+    setIsBlurred(false);
   };
 
   return (
@@ -59,7 +59,8 @@ function App() {
       <ForecastBoard
         today={data?.today}
         nextDays={data?.nextDays}
-        isLoading={Boolean(error) || isFetching || isFocusedSearchInput}
+        isLoading={isFetching}
+        isBlurred={(isBlurred || isFetching || Boolean(error)) && Boolean(data)}
       />
     </AppBackground>
   );

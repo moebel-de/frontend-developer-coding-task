@@ -1,11 +1,9 @@
 import React from "react";
 
-import {Header} from "./components/Header";
+import { AppHeader } from "./components/AppHeader";
 
 function App() {
-  return (
-    <Header />
-  );
+  return <AppHeader />;
 }
 
 export default App;

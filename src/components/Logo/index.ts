@@ -1,1 +1,1 @@
-export { default as AppLogo } from './Logo'
+export { default as Logo } from "./Logo";

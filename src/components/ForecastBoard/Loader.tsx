@@ -10,7 +10,7 @@ const Container = styled.div`
 
 function Loader() {
   return (
-    <Container>
+    <Container role="progressbar">
       <CircleSpinner width="144px" height="144px" />
     </Container>
   );

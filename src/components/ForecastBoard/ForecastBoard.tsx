@@ -15,7 +15,7 @@ interface Props {
 
 function ForecastBoard({ today, nextDays, isBlurred, isLoading }: Props) {
   return (
-    <Wrapper isBlurred={isBlurred}>
+    <Wrapper isBlurred={isBlurred} data-testid="forecast-board-wrapper">
       <Container>
         {!today && isLoading && <Loader />}
 

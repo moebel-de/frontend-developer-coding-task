@@ -20,7 +20,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "npm run build && serve -s -l 9000 build",
-    "format": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|scss|md)\""
+    "format": "prettier --write \"**/*.+(js|jsx|ts|tsx|json|css|scss|md)\"",
+    "test:coverage": "react-scripts test --coverage --runInBand --watchAll=false"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,6 +42,38 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/index.tsx"
+    ],
+    "coveragePathIgnorePatterns": [
+      "./src/*/*.types.{ts,tsx}",
+      "./src/index.tsx"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text-summary",
+      "clover"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 90,
+        "branches": 90,
+        "lines": 90,
+        "functions": 90
+      }
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "moduleNameMapper": {
+      "src/(.*)$": "<rootDir>/src/$1",
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+    }
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.11.1",

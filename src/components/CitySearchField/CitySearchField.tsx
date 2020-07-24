@@ -37,9 +37,15 @@ function CitySearch({
           onFocus={onBlur}
           onChange={onChange}
           placeholder="Enter a city name"
+          data-testid="city-search-input"
         />
-        <SubmitButton type="submit" onFocus={onFocus} onBlur={onBlur}>
-          <ArrowIcon />
+        <SubmitButton
+          type="submit"
+          data-testid="city-search-submit-btn"
+          onFocus={onFocus}
+          onBlur={onBlur}
+        >
+          <ArrowIcon data-testid="city-search-arrow-icon" />
         </SubmitButton>
       </SearchBox>
     </Container>

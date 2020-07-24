@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-import * as api from "../api";
-import { WeeklyForecast } from "../api/types";
+import { getCityCoordinates, getWeeklyForecast } from "../api";
 import { WeekDayWeather } from "../types/weather";
+import { normalizeWeeklyForecastData } from "./normalize-weekly-forecast-data";
 
-type Data = {
+export type Data = {
   today: WeekDayWeather;
   nextDays: WeekDayWeather[];
 };
@@ -37,11 +37,11 @@ export function useWeeklyForecast(
         setError(null);
         setIsFetching(true);
 
-        const coord = await api.getCityCoordinates(city);
-        const weather = await api.getWeeklyForecast(coord.lat, coord.lon);
+        const coord = await getCityCoordinates(city);
+        const weather = await getWeeklyForecast(coord.lat, coord.lon);
 
         if (!didCancel) {
-          setData(normalizeData(weather, nextDaysCount));
+          setData(normalizeWeeklyForecastData(weather, nextDaysCount));
         }
       } catch (error) {
         if (!didCancel) {
@@ -65,13 +65,4 @@ export function useWeeklyForecast(
   }, [city, nextDaysCount]);
 
   return [state, setCity];
-}
-
-function normalizeData(data: WeeklyForecast, nextDaysCount: number): Data {
-  const today: WeekDayWeather = api.normalizeCurrentModel(data.current);
-  const nextDays: WeekDayWeather[] = api.normalizDailyModel(
-    data.daily.slice(1, nextDaysCount + 1)
-  );
-
-  return { today, nextDays };
 }

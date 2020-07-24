@@ -50,7 +50,8 @@
     ],
     "coveragePathIgnorePatterns": [
       "./src/*/*.types.{ts,tsx}",
-      "./src/index.tsx"
+      "./src/index.tsx",
+      "./src/GlobalStyle.ts"
     ],
     "coverageReporters": [
       "json",

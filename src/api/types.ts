@@ -30,7 +30,6 @@ interface Day {
   dew_point: number;
   uvi: number;
   clouds: number;
-  visibility: number;
   wind_speed: number;
   wind_deg: number;
   weather: Weather[];
@@ -38,13 +37,14 @@ interface Day {
 
 export interface CurrentDay extends Day {
   temp: number;
+  visibility: number;
   feels_like: number;
 }
 
 export interface Daily extends Day {
   feels_like: FeelsLike;
   pop: number;
-  rain: number;
+  rain?: number;
   temp: Temp;
 }
 

@@ -1,7 +1,7 @@
 import { WeekDayWeather } from "../types/weather";
 import { Daily } from "./types";
 
-export function normalizDailyModel(days: Daily[]): WeekDayWeather[] {
+export function normalizeDailyModel(days: Daily[]): WeekDayWeather[] {
   return days.map((item) => {
     const weather = item.weather[0];
 

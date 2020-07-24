@@ -3,7 +3,7 @@ export enum BreakPoints {
   laptop = "laptop",
 }
 
-const breakPoints: {
+export const breakPoints: {
   [key in BreakPoints]: string;
 } = {
   mobileLarge: "480px",
@@ -17,6 +17,6 @@ export const device: {
   laptop: getMQ(BreakPoints.laptop),
 };
 
-function getMQ(breakPoint: BreakPoints) {
+export function getMQ(breakPoint: BreakPoints) {
   return `(min-width: ${breakPoints[breakPoint]})`;
 }

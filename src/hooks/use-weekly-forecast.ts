@@ -42,13 +42,13 @@ export function useWeeklyForecast(
 
         if (!didCancel) {
           setData(normalizeWeeklyForecastData(weather, nextDaysCount));
+          setIsFetching(false);
         }
       } catch (error) {
         if (!didCancel) {
           setError(error.message);
+          setIsFetching(false);
         }
-      } finally {
-        setIsFetching(false);
       }
     }
 

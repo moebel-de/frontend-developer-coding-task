@@ -143,4 +143,20 @@ describe("use weekly forecast hook", () => {
     expect(mockGetCityCoordinates).toHaveBeenCalledWith(UPDATED_CITY);
     expect(mockGetCityCoordinates).toHaveBeenCalledTimes(2);
   });
+
+  test("Should skip from set the error if the hook already is canceled", () => {
+    mockGetCityCoordinates.mockRejectedValueOnce({});
+
+    const { unmount } = renderHook(async () => useWeeklyForecast(INITIAL_CITY));
+
+    unmount();
+  });
+
+  test("Should skip from set the data if the hook already is canceled", () => {
+    mockGetCityCoordinates.mockResolvedValueOnce({});
+
+    const { unmount } = renderHook(async () => useWeeklyForecast(INITIAL_CITY));
+
+    unmount();
+  });
 });

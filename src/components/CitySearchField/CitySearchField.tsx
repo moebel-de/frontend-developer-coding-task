@@ -11,7 +11,7 @@ import {
 import { CitySearchFieldProps } from "./types";
 
 function CitySearch({
-  value = "",
+  value,
   onBlur,
   onFocus,
   onChange,

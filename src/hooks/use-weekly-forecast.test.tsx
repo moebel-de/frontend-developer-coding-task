@@ -85,6 +85,42 @@ describe("use weekly forecast hook", () => {
     });
   });
 
+  test("should return nothing for empty value", async () => {
+    mockNormalizeData.mockReturnValueOnce(PARIS_COORDS);
+    mockGetCityCoordinates.mockResolvedValueOnce(PARIS_COORDS);
+    mockGetWeeklyForecast.mockResolvedValueOnce({ ...PARIS_COORDS });
+
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useWeeklyForecast(INITIAL_CITY)
+    );
+
+    expect(result.current[0]).toMatchObject({
+      data: null,
+      error: null,
+      isFetching: true,
+    });
+
+    await waitForNextUpdate();
+
+    expect(mockGetCityCoordinates).toHaveBeenCalledTimes(1);
+    expect(mockGetCityCoordinates).toHaveBeenCalledWith(INITIAL_CITY);
+    expect(mockGetCityCoordinates).toHaveReturned();
+    expect(mockGetCityCoordinates).toHaveReturnedTimes(1);
+
+    act(() => {
+      const [, setCity] = result.current;
+      setCity("");
+    });
+
+    expect(result.current[0]).toMatchObject({
+      data: null,
+      error: null,
+      isFetching: false,
+    });
+
+    expect(mockGetCityCoordinates).toHaveBeenCalledTimes(1);
+  });
+
   test("should set Hamburg as the new city", async () => {
     mockGetCityCoordinates.mockResolvedValueOnce({ lon: 10, lat: 53.55 });
 

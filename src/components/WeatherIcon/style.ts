@@ -6,6 +6,4 @@ type WeatherIconStyleProps = {
 
 export const WeatherIconStyle = styled.span<WeatherIconStyleProps>`
   width: ${({ sizeInPx }) => sizeInPx}px;
-  height: ${({ sizeInPx }) => sizeInPx}px;
-  display: inline-block;
 `;

@@ -14,7 +14,10 @@ exports[`Background test warm background 1`] = `
     blockquote,q{quotes:none;}
     blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
     table{border-collapse:collapse;border-spacing:0;}
-    body{font-family:'Roboto',sans-serif;font-size:16px;color:rgb(43,18,2);}
+    html,body,#root{height:100%;}
+    body{font-family:'Roboto',sans-serif;font-size:16px;color:rgb(43,18,2);height:100%;}
+    .error{color:#f22;padding:20px;text-align:center;}
+    .error h2{font-weight:900;font-size:30px;margin-bottom:20px;}
   </style>
 </head>
 `;

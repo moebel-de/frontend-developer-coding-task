@@ -24,8 +24,8 @@ type TempBackgroundContainerProps = {
 };
 
 export const TempBackgroundContainer = styled.div<TempBackgroundContainerProps>`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100%;
   padding: 20px;
   box-sizing: border-box;
   ${({ temp }) => colors[temp]};

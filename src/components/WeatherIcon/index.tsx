@@ -7,6 +7,9 @@ import { ReactComponent as IconTen } from "./weather-icons/wi-day-showers.svg";
 import { ReactComponent as IconEleven } from "./weather-icons/wi-day-thunderstorm.svg";
 import { ReactComponent as IconThirteen } from "./weather-icons/wi-snow-wind.svg";
 import { ReactComponent as IconFifty } from "./weather-icons/wi-dust.svg";
+import { ReactComponent as IconRight } from "./weather-icons/wi-direction-right.svg";
+import { ReactComponent as IconDown } from "./weather-icons/wi-direction-down.svg";
+import { ReactComponent as IconUp } from "./weather-icons/wi-direction-up.svg";
 import { WeatherIconStyle } from "./style";
 
 export const Icons: {
@@ -21,6 +24,9 @@ export const Icons: {
   "11d": IconEleven,
   "13d": IconThirteen,
   "50d": IconFifty,
+  right: IconRight,
+  down: IconDown,
+  up: IconUp,
 };
 
 export const getIconElement = (code: string): React.FunctionComponent | null =>

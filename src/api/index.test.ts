@@ -23,7 +23,7 @@ describe("testing weather api", () => {
 
     // check url -> dos it make sense?
     expect(fetch.mock.calls[0][0]).toEqual(
-      `${API_URL}daily?q=${dummyCity}&cnt=5&units=metric&appid=${API_TOKEN}`,
+      `${API_URL}daily?q=${dummyCity}&cnt=16&units=metric&appid=${API_TOKEN}`,
     );
   });
   it("test empty response", async () => {
@@ -50,7 +50,7 @@ describe("testing weather api", () => {
 
     // check url -> dos it make sense?
     expect(fetch.mock.calls[0][0]).toEqual(
-      `${API_URL}daily?q=${dummyCity}&cnt=5&units=metric&appid=${API_TOKEN}`,
+      `${API_URL}daily?q=${dummyCity}&cnt=16&units=metric&appid=${API_TOKEN}`,
     );
   });
   it("test api error 404", async () => {

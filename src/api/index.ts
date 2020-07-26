@@ -35,6 +35,6 @@ export async function fetchToJSON<T>(url: string): Promise<T | undefined> {
 }
 
 export const getWeatherData = (city: string) => {
-  const url = `${API_URL}daily?q=${city}&cnt=5&units=metric&appid=${API_TOKEN}`;
+  const url = `${API_URL}daily?q=${city}&cnt=16&units=metric&appid=${API_TOKEN}`;
   return fetchToJSON<WeatherDataForCity>(url);
 };

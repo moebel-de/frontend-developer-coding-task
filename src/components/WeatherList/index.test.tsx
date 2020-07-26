@@ -13,6 +13,11 @@ describe("WeatherList", () => {
     expect(container).toBeInTheDocument();
     expect(container.firstChild).not.toHaveStyleRule("filter", "blur(8px)");
   });
+  test("test WeatherList loading", () => {
+    const { getByText } = render(<WeatherList loading />);
+
+    expect(getByText("Loading...")).toBeInTheDocument();
+  });
   test("test WeatherList with blur", () => {
     const { container } = render(<WeatherList data={testData} isBlurred />);
     expect(container).toMatchSnapshot();

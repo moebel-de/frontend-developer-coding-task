@@ -17,7 +17,8 @@ exports[`Background test warm background 1`] = `
     html,body,#root{height:100%;}
     body{font-family:'Roboto',sans-serif;font-size:16px;color:rgb(43,18,2);height:100%;}
     .error{color:#f22;padding:20px;text-align:center;}
-    .error h2{font-weight:900;font-size:30px;margin-bottom:20px;}
+    h2{font-weight:900;font-size:30px;margin-bottom:20px;}
+    .loading{text-align:center;}
   </style>
 </head>
 `;

@@ -92,5 +92,7 @@ describe("Background", () => {
       charCode: 13,
     });
     expect(onSubmit).toBeCalledTimes(1);
+    expect(setFocus).toBeCalledTimes(1);
+    expect(setFocus).toBeCalledWith(true);
   });
 });

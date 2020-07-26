@@ -18,10 +18,13 @@ export const GlobalStyle = createGlobalStyle`
     color: #f22;
     padding: 20px;
     text-align: center;
-    h2 {
-      font-weight: 900;
-      font-size: 30px;
-      margin-bottom: 20px;
-    }
+  }
+  h2 {
+    font-weight: 900;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .loading {
+    text-align: center;
   }
 `;

@@ -19,6 +19,8 @@ export const CitySearchField: React.FC<Props> = ({
   const onKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.charCode === 13) {
       onSubmit();
+    } else {
+      setFocus(true);
     }
   };
   const onChangeValue = (event: ChangeEvent<HTMLInputElement>) => {

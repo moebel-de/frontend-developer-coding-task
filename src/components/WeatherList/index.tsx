@@ -34,6 +34,7 @@ export interface WeatherListProps {
   isBlurred?: boolean;
   data?: WeatherData[];
   errorMessage?: string;
+  loading?: boolean;
 }
 
 export const FORCAST_SIZE = 5;
@@ -42,12 +43,22 @@ export const WeatherList: React.FC<WeatherListProps> = ({
   isBlurred,
   data,
   errorMessage,
+  loading,
 }) => {
   const [all, showAll] = useState(false);
-
   const onClick = () => {
     showAll((sa) => !sa);
   };
+
+  if (loading) {
+    return (
+      <OuterContainer>
+        <div className="loading">
+          <h2>Loading...</h2>
+        </div>
+      </OuterContainer>
+    );
+  }
 
   if (!data || data.length < 2 || errorMessage) {
     if (errorMessage) {

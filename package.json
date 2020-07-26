@@ -10,6 +10,7 @@
     "styled-reset": "^4.2.1"
   },
   "devDependencies": {
+    "serve": "^11.3.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -47,6 +48,7 @@
     }
   },
   "scripts": {
+    "demo": "yarn && yarn build && yarn serve -s ./build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint --ext ts,tsx src --max-warnings 0",

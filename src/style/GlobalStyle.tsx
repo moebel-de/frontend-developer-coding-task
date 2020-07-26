@@ -19,6 +19,11 @@ export const GlobalStyle = createGlobalStyle`
     padding: 20px;
     text-align: center;
   }
+  h1 {
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
   h2 {
     font-weight: 900;
     font-size: 30px;

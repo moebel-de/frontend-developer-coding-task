@@ -50,7 +50,9 @@ export const WeatherSearch: React.FC<{ onTempChange: (t: number) => void }> = ({
         loading: false,
         data: undefined,
         errorMessage:
-          e.message === "unauthorized" ? "No API given!" : e.message,
+          e.message === "unauthorized"
+            ? "No valid API_TOKEN, create .env.local. See Readme.md"
+            : e.message,
       }));
     }
     setFocused(false);

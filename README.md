@@ -4,7 +4,7 @@
 
 The goal is to create a weather app that shows the weather forecast for a given city. We recommend to either use https://openweathermap.org/api or create a mock api, for instance via https://github.com/typicode/json-server
 
-Please clone this repository and create a [git bundle](https://git-scm.com/docs/git-bundle) and send it to us when you finished the task. One of the most important topics we want to see, is how you commit your progress. This does not mean every commit has to be perfect. It is likely to have commits that break the build, tests or a certain feature. Those will not be evaluated as __bad__ if you fix them with follow up commits. You can use the [checklist](https://github.com/moebel-de/frontend-developer-coding-task#checklist) below as a guide for your commits.
+Please clone this repository and create a [git bundle](https://git-scm.com/docs/git-bundle) and send it to us when you finished the task. One of the most important topics we want to see, is how you commit your progress. This does not mean every commit has to be perfect. It is likely to have commits that break the build, tests or a certain feature. Those will not be evaluated as **bad** if you fix them with follow up commits. You can use the [checklist](https://github.com/moebel-de/frontend-developer-coding-task#checklist) below as a guide for your commits.
 
 If there is something unclear please feel free to create an issue in this repository.
 
@@ -31,6 +31,7 @@ Font: https://fonts.google.com/specimen/Roboto?query=roboto
 ## Tech Stack
 
 - React (UI Library)
+- React Context API (for state management)
 - Typescript (Language)
 - Styled Components (Styling)
 - Jest (Test runner)

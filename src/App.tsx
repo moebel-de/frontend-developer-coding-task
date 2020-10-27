@@ -1,13 +1,12 @@
 import React from "react";
-import logo from "./logo.svg";
+import Home from "./pages/home";
+import GlobalStyle from "./globalStyle";
 
 function App() {
   return (
-    <div>
-      <header>
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
+    <>
+      <Home />
+    </>
   );
 }
 

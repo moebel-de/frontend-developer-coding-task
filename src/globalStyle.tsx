@@ -4,15 +4,14 @@ interface weather {
   temp: number;
 }
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = styled.div`
   * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction:column
-
- } 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Container = styled.div`

@@ -5,7 +5,9 @@ import GlobalStyle from "./globalStyle";
 function App() {
   return (
     <>
-      <Home />
+      <GlobalStyle>
+        <Home />
+      </GlobalStyle>
     </>
   );
 }

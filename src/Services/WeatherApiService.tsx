@@ -9,7 +9,7 @@ export class WeatherApiService {
     return axios.get<WeatherInfo>(this.apiUrl, {
       params: {q: city, appid: this.apiKey, units: 'metric' }
     })
-      .then(({ data }) => ({ success: true, weatherInfo: data }))
-      .catch(() => ({ success: false }));
+    .then(({ data }) => ({ success: true, weatherInfo: data }))
+    .catch(() => ({ success: false }));
   };
 }

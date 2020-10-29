@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import logo from './logo.svg';
@@ -18,6 +18,12 @@ const BlackSpan = styled.span`
 `;
 
 function App() {
+  const [ city, setCity ] = useState('Some City');
+
+  const handleCityChange = (e: string) => {
+    setCity(e);
+  }
+
   return (
     <div style={{ textAlign: 'center' }}>
       <Fonts />
@@ -30,7 +36,7 @@ function App() {
           <BlackSpan>whatweather?</BlackSpan>
         </header>
         <main>
-          <CityInput />
+          <CityInput city={ city } onChange={ handleCityChange } />
         </main>
       </AppDiv>
     </div >

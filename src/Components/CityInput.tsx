@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
 
 const CityInputField = styled.input`
@@ -22,11 +22,11 @@ const CityInputLabel = styled.label`
   margin: 30px 10px 20px;
 `;
 
-export function CityInput() {
+export function CityInput(props: { city: string; onChange: (e:string) => void }) {
   return (
     <div>
       <CityInputLabel htmlFor="city">Type in your location and we will tell you what weather to expect.</CityInputLabel>
-      <CityInputField type="text" name="city" placeholder="Type your city" />
+      <CityInputField type="text" name="city" placeholder="Type your city" value={props.city} onChange={ e => props.onChange(e.target.value) } />
     </div>
   );
 }

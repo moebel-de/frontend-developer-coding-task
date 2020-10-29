@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { KeyboardEvent } from 'react';
 import styled from 'styled-components';
 import 'weather-icons/css/weather-icons.min.css';
 
@@ -51,6 +51,13 @@ const CityInputArrow = styled.i`
 `;
 
 export function CityInputComponent(props: {city: string; onChange: (e:string) => void; fetchWeather: () => void;}) {
+  const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      // TODO Make the input unFocus, its needed for future blurring of the content
+      props.fetchWeather();
+    }
+  }
+
   return (
     <div>
       <CityInputLabel htmlFor="city">Type in your location and we will tell you what weather to expect.</CityInputLabel>
@@ -59,7 +66,8 @@ export function CityInputComponent(props: {city: string; onChange: (e:string) =>
           name="city" 
           placeholder="Type your city" 
           value={props.city} 
-          onChange={(e) => props.onChange(e.target.value)} />
+          onChange={(e) => props.onChange(e.target.value)}
+          onKeyPress={(e) => onKeyPress(e) } />
         <CityInputArrow onClick={ () => props.fetchWeather() } className="wi wi-right" />
       </div>
     </div>

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import logo from './logo.svg';
 import Fonts from './Fonts/fonts';
 import { CityInput } from './Components';
+import { WeatherApiService } from './Services';
 
 const AppDiv = styled.div`
   text-align: left;
@@ -17,11 +18,25 @@ const BlackSpan = styled.span`
   font-family: roboto-black;
 `;
 
+const weatherApi = new WeatherApiService();
+
 function App() {
   const [ city, setCity ] = useState('Some City');
 
   const handleCityChange = (e: string) => {
     setCity(e);
+  }
+
+  const fetchWeather = () => {
+    if (!!city) {
+      weatherApi.getCurrentWeather(city).then((weatherResponse) => {
+        if (weatherResponse.success) {
+          console.log(weatherResponse.weatherInfo);
+        }
+        
+        // Handle error and not found case
+      });
+    }
   }
 
   return (
@@ -36,7 +51,7 @@ function App() {
           <BlackSpan>whatweather?</BlackSpan>
         </header>
         <main>
-          <CityInput city={ city } onChange={ handleCityChange } />
+          <CityInput city={ city } onChange={ handleCityChange } fetchWeather={ fetchWeather } />
         </main>
       </AppDiv>
     </div >

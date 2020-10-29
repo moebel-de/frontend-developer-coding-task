@@ -48,7 +48,7 @@ const CityInputArrow = styled.i`
   }
 `;
 
-export function CityInput(props: {city: string; onChange: (e:string) => void}) {
+export function CityInput(props: {city: string; onChange: (e:string) => void; fetchWeather: () => void;}) {
   return (
     <div>
       <CityInputLabel htmlFor="city">Type in your location and we will tell you what weather to expect.</CityInputLabel>
@@ -58,7 +58,7 @@ export function CityInput(props: {city: string; onChange: (e:string) => void}) {
           placeholder="Type your city" 
           value={props.city} 
           onChange={(e) => props.onChange(e.target.value)} />
-        <CityInputArrow className="wi wi-right" />
+        <CityInputArrow onClick={ () => props.fetchWeather() } className="wi wi-right" />
       </div>
     </div>
   );

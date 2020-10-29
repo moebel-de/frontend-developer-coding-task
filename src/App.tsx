@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import logo from './logo.svg';
-import { BackgroundComponent, CityInputComponent, WeatherInfoComponent } from './Components';
+import { BackgroundComponent, CityInputComponent, WeatherInfoComponent, WeatherWeeklyInfoComponent } from './Components';
 import { WeatherApiService } from './Services';
 import { WeatherInfo } from './Models';
 
@@ -42,6 +42,7 @@ function App() {
         <main>
           <CityInputComponent city={ city } onChange={ handleCityChange } fetchWeather={ fetchWeather } />
           { !!weatherInfo && <WeatherInfoComponent weatherInfo={ weatherInfo } /> }
+          <WeatherWeeklyInfoComponent />
         </main>
       </BackgroundComponent>
     </div >

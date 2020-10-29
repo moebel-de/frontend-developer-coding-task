@@ -2,17 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import logo from './logo.svg';
-import { CityInputComponent, WeatherInfoComponent } from './Components';
+import { BackgroundComponent, CityInputComponent, WeatherInfoComponent } from './Components';
 import { WeatherApiService } from './Services';
 import { WeatherInfo } from './Models';
-
-const AppDiv = styled.div`
-  text-align: left;
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 30px;
-  background: linear-gradient(-180deg, rgb(247, 191, 176) 0%, rgb(223, 210, 127) 100%);
-`;
 
 const BlackSpan = styled.span`
   font-family: roboto-black;
@@ -40,7 +32,7 @@ function App() {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <AppDiv>
+      <BackgroundComponent temperature={weatherInfo?.main.temp}>
         <header>
           <div>
             <img src={logo} className="App-logo" alt="logo" />
@@ -51,7 +43,7 @@ function App() {
           <CityInputComponent city={ city } onChange={ handleCityChange } fetchWeather={ fetchWeather } />
           { !!weatherInfo && <WeatherInfoComponent weatherInfo={ weatherInfo } /> }
         </main>
-      </AppDiv>
+      </BackgroundComponent>
     </div >
   );
 }

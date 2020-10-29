@@ -1,1 +1,2 @@
-export * from './CityInput';
+export * from './CityInputComponent';
+export * from './WeatherInfoComponent';

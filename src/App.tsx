@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import logo from './logo.svg';
-import Fonts from './Fonts/fonts';
-import { CityInput } from './Components';
+import { CityInputComponent, WeatherInfoComponent } from './Components';
 import { WeatherApiService } from './Services';
+import { WeatherInfo } from './Models';
 
 const AppDiv = styled.div`
   text-align: left;
@@ -21,7 +21,8 @@ const BlackSpan = styled.span`
 const weatherApi = new WeatherApiService();
 
 function App() {
-  const [ city, setCity ] = useState('Some City');
+  const [ city, setCity ] = useState('Berlin');
+  const [ weatherInfo, setWeatherInfo ] = useState(undefined as WeatherInfo | undefined);
 
   const handleCityChange = (e: string) => {
     setCity(e);
@@ -30,19 +31,15 @@ function App() {
   const fetchWeather = () => {
     if (!!city) {
       weatherApi.getCurrentWeather(city).then((weatherResponse) => {
-        if (weatherResponse.success) {
-          console.log(weatherResponse.weatherInfo);
+        if (weatherResponse.success && !!weatherResponse.success) {
+          setWeatherInfo(weatherResponse.weatherInfo);
         }
-        
-        // Handle error and not found case
       });
     }
   }
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <Fonts />
-
       <AppDiv>
         <header>
           <div>
@@ -51,7 +48,8 @@ function App() {
           <BlackSpan>whatweather?</BlackSpan>
         </header>
         <main>
-          <CityInput city={ city } onChange={ handleCityChange } fetchWeather={ fetchWeather } />
+          <CityInputComponent city={ city } onChange={ handleCityChange } fetchWeather={ fetchWeather } />
+          { !!weatherInfo && <WeatherInfoComponent weatherInfo={ weatherInfo } /> }
         </main>
       </AppDiv>
     </div >

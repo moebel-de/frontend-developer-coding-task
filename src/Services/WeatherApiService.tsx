@@ -6,7 +6,9 @@ export class WeatherApiService {
   private readonly apiUrl = 'http://api.openweathermap.org/data/2.5/weather';
 
   getCurrentWeather(city: string): Promise<{ success: boolean; weatherInfo?: WeatherInfo }> {
-    return axios.get<WeatherInfo>(this.apiUrl, {params: {q: city, appid: this.apiKey}})
+    return axios.get<WeatherInfo>(this.apiUrl, {
+      params: {q: city, appid: this.apiKey, units: 'metric' }
+    })
       .then(({ data }) => ({ success: true, weatherInfo: data }))
       .catch(() => ({ success: false }));
   };

@@ -8,10 +8,12 @@ const CityInputField = styled.input`
   border: none;
   font-size: 1.5em;
   text-align: center;
-  padding: 15px 8% 15px 0;
   box-shadow: 0px 2px 10px 3px rgba(0, 0, 0, 0.2);
   transition: box-shadow .5s;
   box-sizing: border-box;
+  
+  /* This causes city name to be behind arrow if name is too long. Though there is no city name that long. Anyway, bug to fix */
+  padding: 15px 0; 
 
   &:focus {
     outline: none;
@@ -48,7 +50,7 @@ const CityInputArrow = styled.i`
   }
 `;
 
-export function CityInput(props: {city: string; onChange: (e:string) => void; fetchWeather: () => void;}) {
+export function CityInputComponent(props: {city: string; onChange: (e:string) => void; fetchWeather: () => void;}) {
   return (
     <div>
       <CityInputLabel htmlFor="city">Type in your location and we will tell you what weather to expect.</CityInputLabel>

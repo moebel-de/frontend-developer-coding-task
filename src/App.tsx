@@ -10,6 +10,7 @@ const AppDiv = styled.div`
   max-width: 1024px;
   margin: 0 auto;
   padding: 30px;
+  background: linear-gradient(-180deg, rgb(247, 191, 176) 0%, rgb(223, 210, 127) 100%);
 `;
 
 const BlackSpan = styled.span`

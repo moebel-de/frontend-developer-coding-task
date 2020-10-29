@@ -1,0 +1,7 @@
+/**
+ * Main styles not related to components
+ * Reset styles, mixins if needed
+ */
+body {
+  margin: 0;
+}

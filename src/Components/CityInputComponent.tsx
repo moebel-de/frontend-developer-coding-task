@@ -50,11 +50,17 @@ const CityInputArrow = styled.i`
   }
 `;
 
-export function CityInputComponent(props: {city: string; onChange: (e:string) => void; fetchWeather: () => void;}) {
+export function CityInputComponent(props: {
+    city: string; onChange: (e:string) => void; 
+    fetchWeather: () => void; 
+    setIsInputFocused: (isFocused: boolean) => void;}
+  ) {
+  let cityInputRef: HTMLInputElement | null;
+
   const onKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      // TODO Make the input unFocus, its needed for future blurring of the content
       props.fetchWeather();
+      !!cityInputRef && cityInputRef.blur();
     }
   }
 
@@ -67,7 +73,10 @@ export function CityInputComponent(props: {city: string; onChange: (e:string) =>
           placeholder="Type your city" 
           value={props.city} 
           onChange={(e) => props.onChange(e.target.value)}
-          onKeyPress={(e) => onKeyPress(e) } />
+          onKeyPress={(e) => onKeyPress(e) }
+          onFocus={() => props.setIsInputFocused(true)}
+          onBlur={() => props.setIsInputFocused(false)}
+          ref={(CityInputRef) => { cityInputRef = CityInputRef; }}/>
         <CityInputArrow onClick={ () => props.fetchWeather() } className="wi wi-right" />
       </div>
     </div>

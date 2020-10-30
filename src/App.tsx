@@ -14,10 +14,11 @@ const weatherApi = new WeatherApiService();
 
 function App() {
   const [ city, setCity ] = useState('Berlin');
+  const [ mounted, setMounted ] = useState(false);
+  const [ isInputFocused, setIsInputFocused ] = useState(false);
   const [ weatherInfo, setWeatherInfo ] = useState(undefined as WeatherInfo | undefined);
   const [ weatherDailyInfo, setWeatherDailyInfo ] = useState([] as Array<WeatherDailyInfo>);
-  const [ mounted, setMounted ] = useState(false);
-
+  
   const handleCityChange = (e: string) => {
     setCity(e);
   }
@@ -69,9 +70,9 @@ function App() {
           <BlackSpan>whatweather?</BlackSpan>
         </header>
         <main>
-          <CityInputComponent city={ city } onChange={ handleCityChange } fetchWeather={ fetchWeather } />
-          { !!weatherInfo && <WeatherInfoComponent weatherInfo={ weatherInfo } /> }
-          { !!weatherDailyInfo.length && <WeatherWeeklyInfoComponent weatherDailyInfo={ weatherDailyInfo } /> }
+          <CityInputComponent city={ city } onChange={ handleCityChange } fetchWeather={ fetchWeather } setIsInputFocused={ setIsInputFocused } />
+          { !!weatherInfo && <WeatherInfoComponent weatherInfo={ weatherInfo } isInputFocused={ isInputFocused } /> }
+          { !!weatherDailyInfo.length && <WeatherWeeklyInfoComponent weatherDailyInfo={ weatherDailyInfo } isInputFocused={ isInputFocused } /> }
         </main>
       </BackgroundComponent>
     </div>

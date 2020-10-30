@@ -41,7 +41,10 @@ const WeatherIcon = styled.i`
   margin-left: 10px;
 `
 
-export function WeatherWeeklyInfoComponent(props: { weatherDailyInfo: Array<WeatherDailyInfo> }) {
+export function WeatherWeeklyInfoComponent(props: { 
+  weatherDailyInfo: Array<WeatherDailyInfo>,
+  isInputFocused: boolean,
+}) {
   const upcomingDays = props.weatherDailyInfo.slice(0, 5);
   const getDayName = (dateTime: number) => {
     const date = new Date(dateTime * 1000);
@@ -49,7 +52,7 @@ export function WeatherWeeklyInfoComponent(props: { weatherDailyInfo: Array<Weat
   }
 
   return (
-    <DailyWeathersContainer>
+    <DailyWeathersContainer style={{ filter: `blur(${props.isInputFocused ? '10px' : ''})` }}>
       {
         upcomingDays.map((weatherInfo) => 
           <div key={weatherInfo.dt}>

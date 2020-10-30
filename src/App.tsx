@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import logo from './logo.svg';
@@ -16,6 +16,7 @@ function App() {
   const [ city, setCity ] = useState('Berlin');
   const [ weatherInfo, setWeatherInfo ] = useState(undefined as WeatherInfo | undefined);
   const [ weatherDailyInfo, setWeatherDailyInfo ] = useState([] as Array<WeatherDailyInfo>);
+  const [ mounted, setMounted ] = useState(false);
 
   const handleCityChange = (e: string) => {
     setCity(e);
@@ -24,7 +25,7 @@ function App() {
   const fetchWeather = () => {
     if (!!city) {
       weatherApi.getCurrentWeather(city).then((weatherResponse) => {
-        if (!!weatherResponse.success && weatherResponse.weatherInfo) {
+        if (weatherResponse.success && weatherResponse.weatherInfo) {
           setWeatherInfo(weatherResponse.weatherInfo);
 
           /**
@@ -51,6 +52,13 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    if (!mounted) {
+      fetchWeather();
+      setMounted(true);
+    }
+  });
+
   return (
     <div style={{ textAlign: 'center' }}>
       <BackgroundComponent temperature={weatherInfo?.main.temp}>
@@ -66,7 +74,7 @@ function App() {
           { !!weatherDailyInfo.length && <WeatherWeeklyInfoComponent weatherDailyInfo={ weatherDailyInfo } /> }
         </main>
       </BackgroundComponent>
-    </div >
+    </div>
   );
 }
 

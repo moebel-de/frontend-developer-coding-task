@@ -23,7 +23,7 @@ function App() {
   }
 
   const fetchWeather = () => {
-    if (!!city) {
+    if (!!city && (!!weatherInfo ? weatherInfo.name != city : true)) {
       weatherApi.getCurrentWeather(city).then((weatherResponse) => {
         if (weatherResponse.success && weatherResponse.weatherInfo) {
           setWeatherInfo(weatherResponse.weatherInfo);

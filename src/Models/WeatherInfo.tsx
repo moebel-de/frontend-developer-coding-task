@@ -23,6 +23,7 @@
     temp_max: number;
     temp_min: number;
   };
+  name: string;
   weather: Array<Weather>;
 }
 

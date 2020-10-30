@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 
 import logo from './logo.svg';
-import { BackgroundComponent, CityInputComponent, WeatherInfoComponent, WeatherWeeklyInfoComponent } from './Components';
+import { BackgroundComponent, CityInputComponent, WeatherInfoComponent, WeatherWeeklyInfoComponent, MessagesComponent } from './Components';
 import { WeatherApiService } from './Services';
-import { WeatherDailyInfo, WeatherInfo } from './Models';
+import { MessageInterface, WeatherDailyInfo, WeatherInfo } from './Models';
 
 const BlackSpan = styled.span`
   font-family: roboto-black;
@@ -18,13 +18,14 @@ function App() {
   const [ isInputFocused, setIsInputFocused ] = useState(false);
   const [ weatherInfo, setWeatherInfo ] = useState(undefined as WeatherInfo | undefined);
   const [ weatherDailyInfo, setWeatherDailyInfo ] = useState([] as Array<WeatherDailyInfo>);
-  
+  const [ messages, setMessages ] = useState([] as Array<MessageInterface>);
+
   const handleCityChange = (e: string) => {
     setCity(e);
   }
 
-  const fetchWeather = () => {
-    if (!!city && (!!weatherInfo ? weatherInfo.name != city : true)) {
+  const fetchWeather = useCallback(() => {
+    if (!!city && (!!weatherInfo ? weatherInfo.name !== city : true)) {
       weatherApi.getCurrentWeather(city).then((weatherResponse) => {
         if (weatherResponse.success && weatherResponse.weatherInfo) {
           setWeatherInfo(weatherResponse.weatherInfo);
@@ -44,21 +45,29 @@ function App() {
               setWeatherDailyInfo(weathersResponse.weathersInfo.daily);
             }
 
-            // Handle weekly error case
+            // No need to carry error handling here
+            // If previous request worked well then no chance this request will fail
           });
         }
 
-        // Handle error case
-      });
+        if (!weatherResponse.success && weatherResponse.error?.code === 404) {
+          setMessages((prevMessages) => 
+            [...prevMessages, { type: 'error', title: 'The Requested City is not found', details: weatherResponse.error?.message }]);
+
+          setTimeout(() => {
+            setMessages((messages) => messages.splice(-1, 1));
+          }, 3000);
+        }
+      })
     }
-  }
+  }, [city, weatherInfo]);
 
   useEffect(() => {
     if (!mounted) {
       fetchWeather();
       setMounted(true);
     }
-  });
+  }, [mounted, fetchWeather]);
 
   return (
     <div style={{ textAlign: 'center' }}>
@@ -74,6 +83,7 @@ function App() {
           { !!weatherInfo && <WeatherInfoComponent weatherInfo={ weatherInfo } isInputFocused={ isInputFocused } /> }
           { !!weatherDailyInfo.length && <WeatherWeeklyInfoComponent weatherDailyInfo={ weatherDailyInfo } isInputFocused={ isInputFocused } /> }
         </main>
+        <MessagesComponent messages={ messages } />
       </BackgroundComponent>
     </div>
   );

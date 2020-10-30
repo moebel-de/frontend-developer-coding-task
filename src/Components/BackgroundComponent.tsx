@@ -6,6 +6,7 @@ const AppDiv = styled.div`
   max-width: 1024px;
   margin: 0 auto;
   padding: 30px;
+  position: relative;
   transitions: background .5s; /* Make animated color transition */ 
 `;
 

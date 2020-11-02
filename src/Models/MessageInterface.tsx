@@ -1,8 +1,8 @@
 
 export const MessageColors = {
-  'success': '#b7f1cc',
-  'warning': '#e6eaaa',
-  'error': '#eaaaaa'
+  'success': 'rgb(183, 241, 204)',
+  'warning': 'rgb(230, 234, 170)',
+  'error': 'rgb(234, 170, 170)'
 }
 
 export interface MessageInterface {

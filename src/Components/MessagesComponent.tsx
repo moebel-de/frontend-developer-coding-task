@@ -25,15 +25,15 @@ const MessageTitle = styled.h3`
 
 export function MessagesComponent(props: { messages: MessageInterface[] }) {
   return (
-    <MessageContainer>
+    <MessageContainer data-testid="messages-container">
       {
         props.messages.map((message, index) => 
-            <MessageWrapper key={ index } style={{ background: MessageColors[message.type], bottom: `calc(${40 + (index * 40) }px)` }}>
+            <MessageWrapper data-testid="messages-wrapper" key={ index } style={{ background: MessageColors[message.type], bottom: `calc(${40 + (index * 40) }px)` }}>
               <MessageTitle title="Message Header">{ message.title }</MessageTitle>
               {
                 !!message.details && 
                 (
-                  <div>
+                  <div data-testid="message-details">
                     <hr />
                     <p>{ message.details }</p>
                   </div>

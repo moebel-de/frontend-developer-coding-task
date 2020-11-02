@@ -3,7 +3,7 @@ import { WeatherInfo } from '../Models';
 import { WeatherInfoComponentTemplate } from "../Testing";
 import { WeatherInfoComponent } from "./WeatherInfoComponent";
 
-fdescribe('[Weather Info Component]', () => {
+describe('[Weather Info Component]', () => {
   let template: WeatherInfoComponentTemplate;
   const weatherInfo: WeatherInfo = {
     coord: {

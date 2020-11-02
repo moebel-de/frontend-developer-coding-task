@@ -52,13 +52,13 @@ export function WeatherWeeklyInfoComponent(props: {
   }
 
   return (
-    <DailyWeathersContainer style={{ filter: `blur(${props.isInputFocused ? '10px' : ''})` }}>
+    <DailyWeathersContainer data-testid="daily-weather-container" style={{ filter: `blur(${props.isInputFocused ? '10px' : '0'})` }}>
       {
         upcomingDays.map((weatherInfo) => 
-          <div key={weatherInfo.dt}>
-            <span>{getDayName(weatherInfo.dt)}</span>
+          <div data-testid="weather-info-wrapper" key={weatherInfo.dt}>
+            <span data-testid="weather-day-name">{getDayName(weatherInfo.dt)}</span>
             <div>
-              <span>{Math.floor(weatherInfo.temp.day)}&#176;</span>
+              <span data-testid="weather-temperature">{Math.floor(weatherInfo.temp.day)}&#176;</span>
               <span>
                 <WeatherIcon className={'wi ' + IconsMap[weatherInfo.weather[0].main]} />  
               </span>

@@ -66,18 +66,18 @@ export function CityInputComponent(props: {
 
   return (
     <div>
-      <CityInputLabel htmlFor="city">Type in your location and we will tell you what weather to expect.</CityInputLabel>
+      <CityInputLabel data-testid="city-input-label" htmlFor="city">Type in your location and we will tell you what weather to expect.</CityInputLabel>
       <div style={{ position: 'relative' }}>
-        <CityInputField type="text" 
+        <CityInputField type="text" data-testid="city-input-field"
           name="city" 
           placeholder="Type your city" 
           value={props.city} 
-          onChange={(e) => props.onChange(e.target.value)}
+          onChange={(e) => props.onChange(e.target.value) }
           onKeyPress={(e) => onKeyPress(e) }
           onFocus={() => props.setIsInputFocused(true)}
           onBlur={() => props.setIsInputFocused(false)}
           ref={(CityInputRef) => { cityInputRef = CityInputRef; }}/>
-        <CityInputArrow onClick={ () => props.fetchWeather() } className="wi wi-right" />
+        <CityInputArrow data-testid="city-input-arrow" onClick={ () => props.fetchWeather() } className="wi wi-right" />
       </div>
     </div>
   );

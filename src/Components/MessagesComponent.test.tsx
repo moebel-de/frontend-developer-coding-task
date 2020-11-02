@@ -5,7 +5,7 @@ import { MessageInterface, MessageColors } from '../Models';
 import { MessagesComponentTemplate } from "../Testing";
 import { MessagesComponent } from "./MessagesComponent";
 
-describe('[Messaged Component]', () => {
+describe('[Messages Component]', () => {
   let template: MessagesComponentTemplate;
   let messages: MessageInterface[] = [
     { title: 'Test Title 1', type: 'success' },

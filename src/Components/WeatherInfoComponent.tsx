@@ -19,9 +19,9 @@ const TemperatureIcon = styled.i`
 
 export function WeatherInfoComponent(props: { weatherInfo: WeatherInfo; isInputFocused: boolean; }) {
   return (
-    <div style={{ textAlign: 'center', filter: `blur(${props.isInputFocused ? '10px' : '0'})` }}>
-      <TemperatureSpan>
-        <TemperatureIcon 
+    <div data-testid="weather-info-container" style={{ textAlign: 'center', filter: `blur(${props.isInputFocused ? '10px' : '0'})` }}>
+      <TemperatureSpan data-testid="weather-temperature">
+        <TemperatureIcon data-testid="weather-icon"
           className={'wi ' + IconsMap[props.weatherInfo.weather[0].main] } />{ Math.floor(props.weatherInfo.main.temp) }&#176;
       </TemperatureSpan>
     </div>

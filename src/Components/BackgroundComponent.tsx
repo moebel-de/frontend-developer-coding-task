@@ -20,7 +20,7 @@ export function BackgroundComponent(props: { children: ReactElement[], temperatu
   }
   
   return (
-    <AppDiv style={{ background: getBackgroundColor() }}>
+    <AppDiv data-testid="app-background-div" style={{ background: getBackgroundColor() }}>
       {props.children}
     </AppDiv>
   );

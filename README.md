@@ -45,7 +45,7 @@ Font: https://fonts.google.com/specimen/Roboto?query=roboto
 
 ## Checklist
 
-- [ ] Create a background component that changes based on given tempreture
+- [ ] Create a background component that changes based on given temperature
 - [ ] Create icon components out of svgs
 - [ ] Create ui components for the rest
 - [ ] Setup weather api (or implement a mock server)

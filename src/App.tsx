@@ -74,7 +74,7 @@ function App() {
       <BackgroundComponent temperature={weatherInfo?.main.temp}>
         <header>
           <div>
-            <img src={logo} className="App-logo" alt="logo" />
+            <img data-testid="app-logo" src={logo} className="App-logo" alt="logo" />
           </div>
           <BlackSpan>whatweather?</BlackSpan>
         </header>

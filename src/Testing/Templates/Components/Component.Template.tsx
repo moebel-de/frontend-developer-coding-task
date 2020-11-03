@@ -4,8 +4,8 @@ import { ReactElement } from 'react';
 export class ComponentTemplate {
   private debugElement: RenderResult;
 
-  constructor(el: ReactElement) {
-    this.debugElement = render(el);
+  constructor(el: ReactElement | RenderResult) {
+    this.debugElement = 'props' in el ? render(el) : el;
   }
 
   get root(): RenderResult {

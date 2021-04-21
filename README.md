@@ -1,5 +1,7 @@
 # Moebel.de Frontend developer coding task
 
+Please submit your solution as [git bundle](https://git-scm.com/docs/git-bundle).
+
 ## Brief
 
 Build a TODO app with the following features;
